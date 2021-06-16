@@ -56,9 +56,10 @@ const LogIn = () => {
       body: JSON.stringify({username: username, password: password}),
     }) // => apsdjfpiajofasodfosadfoasdfosaodfsfasdfoasfasf
       .then(response => response.json()) //=> apsdjfpiajofasodfosadfoasdfosaodfsfasdfoasfasf => readable format
-      .then(data => {
+      .then(data => { 
         if(data.valid){
-          history.push('/users')
+          console.log(data.userId);
+          history.push('/users/' + data.userId)
         }
         else{
           setMessage('Invalid User name')

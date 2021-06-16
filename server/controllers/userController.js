@@ -262,24 +262,41 @@ userController.deleteUser = async (req, res, next) => {
 
 
 //JOSH
-userController.verifyUser = (req, res, next) => {
+userController.verifyUser = async (req, res, next) => {
 
   console.log('helpppppppppp')
   console.log(req.body);
   // const [username, password] = req.body;
   const username = req.body.username;
   const password = req.body.password;
-  //do datasearch to get user info for username and password
-  console.log('inside')
-  const dummyDatabaseUser = {username: 'Robert', password: 'password123'}; //dummy data
-  //verify user
-  if(username.toLowerCase() === dummyDatabaseUser.username.toLowerCase() && password === dummyDatabaseUser.password){
-    res.locals.valid = true; 
+
+  if(username === undefined || password === undefined || username === '' || password === ''){
+    req.body.valid = false;
+    next();
   }
-  else{
-    res.locals.valid = false;
+  const params = [
+    username,
+    password,
+  ]
+  const  selectUserQuery = `SELECT * FROM users WHERE username = $1 AND password_digest = $2`
+
+  try {
+    const user = await db.query(selectUserQuery, params)
+    // console.log(user.rows[0]);
+    if(user.rows[0] !== undefined){
+      res.locals.valid = true;
+      res.locals.userId = user.rows[0]._id;
+    }
+    else{
+      res.locals.valid = false;
+    }
+    next();
+  }catch(err){
+    console.log('err on verifyUser')
+    next({
+      message: err
+    });
   }
-  next();
 
 }
 
