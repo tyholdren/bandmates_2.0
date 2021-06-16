@@ -1,5 +1,6 @@
 const express = require('express');
 const userController = require('../controllers/userController');
+const cookieController = require('../controllers/cookieController');
 
 const router = express.Router();
 
@@ -23,6 +24,7 @@ router.get(
 router.post(
   '/',
   userController.createUser,
+  cookieController.createCookie,
   (req, res, next) => {
     try {
       res.status(200).json(res.locals.user);
