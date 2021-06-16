@@ -18,6 +18,7 @@ const SignUp = () => {
   const [errors, setErrors] = useState('');
   const [email, setEmail] = useState('');
   const [didSignUp, setDidSignUp] = useState(false);
+  const [userID, setUserID] = useState('');
 
   const labelToSetState = {
     username: setUsername,
@@ -35,6 +36,8 @@ const SignUp = () => {
   const handleChange = e => {
     e.preventDefault();
     let { name, value } = e.target;
+    // console.log("name", name);
+    // console.log("value", value);
     const updateState = labelToSetState[name];
     updateState(value);
   };
@@ -61,7 +64,11 @@ const SignUp = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-    }).then(() => {
+    })
+    .then((data) => data.json())
+    .then(data => {
+      console.log(data);
+      setUserID(data._id);
       setDidSignUp(true);
     }).catch(err => setErrors(err));
   };
@@ -69,8 +76,9 @@ const SignUp = () => {
   // This logic is redirecting to the Search component
   // when someone logs in. 
   let history = useHistory();
-  if (didSignUp) history.push('/users');
-  
+  if (didSignUp) {
+    history.push(`/users/${userID}`);
+  }
   return (
     <div className="signUpAndLogIn">
       <div id="signUpContainer">
@@ -145,7 +153,7 @@ const SignUp = () => {
                 Choose a genre:
                 <select
                   id="genre"
-                  name="genre"
+                  name="genres"
                   onChange={handleChange}
                   multiple
                   className="loginFields"

@@ -12,14 +12,15 @@ const User = () => {
 
   // TODO: in the future, user information should be fetched from 
   // backend via a get request to /api/users/:id
-  // useEffect(() => {
-  //   fetch(`/api/users/${ userId }`)
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       setUser(data);
-  //     })
-  //     .catch(err => console.log(err));
-  // }, []);
+  useEffect(() => {
+    fetch(`/api/users/${ userId }`)
+      .then(res => res.json())
+      .then(data => {
+        setUser(data);
+      })
+      .catch(err => console.log(err));
+  }, []);
+  // NOTE: looks like this is set up for us to get info about the specific user from the databse
 
   if (!user) {
     return (
@@ -53,7 +54,9 @@ const User = () => {
   const formattedInstruments = instruments;
   const formattedGenres = genres;
 
+  //NOTE: not sure if we're actually even using any of this information below...
   return (
+
     <>
       <NavBar />
       <div>{name}</div>

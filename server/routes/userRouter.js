@@ -32,7 +32,7 @@ router.post(
   }
 );
 
-// Get one user
+// Get one user -- do we want this to just find one user and display it or do we want this to redirect us to a users profile page 
 router.get(
   '/:id',
   userController.findUser,
