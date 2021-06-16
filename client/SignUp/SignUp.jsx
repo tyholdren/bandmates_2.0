@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 
 //TODO: figure out how to select multiple values and store them in state
 // Because of this issue, right now a user signing up via our sign up
@@ -77,6 +77,7 @@ const SignUp = () => {
   // when someone logs in. 
   let history = useHistory();
   if (didSignUp) {
+    // <Redirect to={`/users/${userID}`} />
     history.push(`/users/${userID}`);
   }
   return (
