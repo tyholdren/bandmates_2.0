@@ -9,8 +9,11 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(cors()); 
 
 const userRouter = require('./routes/userRouter');
+const verifyRouter = require('./routes/verifyRouter');
 
 app.use('/api/users', userRouter);
+
+app.use('/verify', verifyRouter);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}...`);
