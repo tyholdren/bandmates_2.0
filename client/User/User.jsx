@@ -9,11 +9,12 @@ const User = () => {
   // TODO: there's probably a better way to get a user's ID from ReactRouterDom.
   const history = useHistory();
   const userId = history.location.pathname.split('/users/');
-
+  console.log('userId in users: at index 0',userId[0]);
+  console.log('userId in users: at index 1',userId[1]);
   // TODO: in the future, user information should be fetched from 
   // backend via a get request to /api/users/:id
   useEffect(() => {
-    fetch(`/api/users/${ userId }`)
+    fetch(`/api/users/${ userId[1] }`)
       .then(res => res.json())
       .then(data => {
         setUser(data);

@@ -156,6 +156,8 @@ userController.viewUsers = async (req, res, next) => {
 
 //TODO: this middleware will find one user based on that user's ID. 
 userController.findUser = async (req, res, next) => {
+  console.log('COOOOOOOKIEEEEEEEE: ', req.cookies.SSID);
+
   console.log(req.params.id);
   let userID = req.params.id.slice(1)
   console.log("userID", userID);  
@@ -264,6 +266,7 @@ userController.deleteUser = async (req, res, next) => {
 //JOSH
 userController.verifyUser = async (req, res, next) => {
 
+
   console.log('helpppppppppp')
   console.log(req.body);
   // const [username, password] = req.body;
@@ -283,6 +286,7 @@ userController.verifyUser = async (req, res, next) => {
   try {
     const user = await db.query(selectUserQuery, params)
     // console.log(user.rows[0]);
+    
     if(user.rows[0] !== undefined){
       res.locals.valid = true;
       res.locals.userId = user.rows[0]._id;
