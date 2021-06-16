@@ -163,4 +163,33 @@ userController.deleteUser = async (req, res, next) => {
   }
 };
 
+
+
+
+
+//JOSH
+userController.verifyUser = (req, res, next) => {
+
+  console.log('helpppppppppp')
+  console.log(req.body);
+  // const [username, password] = req.body;
+  const username = req.body.username;
+  const password = req.body.password;
+  //do datasearch to get user info for username and password
+  console.log('inside')
+  const dummyDatabaseUser = {username: 'Robert', password: 'password123'}; //dummy data
+  //verify user
+  if(username.toLowerCase() === dummyDatabaseUser.username.toLowerCase() && password === dummyDatabaseUser.password){
+    res.locals.valid = true; 
+  }
+  else{
+    res.locals.valid = false;
+  }
+  next();
+
+}
+
+
+
+
 module.exports = userController;
