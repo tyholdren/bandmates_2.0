@@ -6,6 +6,9 @@ const userController = {};
 //! There seems to be no change the users when running 
 //! GET requests to /users
 userController.createUser = async (req, res, next) => {
+
+  // console.log("req.body", req.body);
+
   const {
     name,
     username,
@@ -39,6 +42,8 @@ userController.createUser = async (req, res, next) => {
     bio,
     location
   ];
+
+  // console.log("params", params)
 
   try {
     const user = await db.query(createUserQuery, params);
@@ -101,6 +106,8 @@ userController.viewUsers = async (req, res, next) => {
       return acc;
     }, []);
     
+    // console.log("formatted users", formattedUsers);
+
     res.locals.users = formattedUsers;
     return next();
   } catch (error) {
