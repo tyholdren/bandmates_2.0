@@ -10,7 +10,7 @@ SET row_security = off;
 
 CREATE TABLE users (
     "_id" SERIAL PRIMARY KEY,
-    "token" TEXT,
+    "name" TEXT,
     "username" TEXT,
     "password_digest" TEXT,
     "email" TEXT,
@@ -43,10 +43,47 @@ CREATE TABLE instruments (
   "instrument_name" TEXT
 );
 
--- psql -d postgres://obzhuzsf:kY_Ho0WRyGVLNlo--Akm8P4VpDR87oDD@batyr.db.elephantsql.com/obzhuzs -f bandmates_postgres_db.sql
+INSERT INTO instruments (instrument_name)
+VALUES ('vocals')
+INSERT INTO instruments (instrument_name)
+VALUES ('guitar')
+INSERT INTO instruments (instrument_name)
+VALUES ('bass')
+INSERT INTO instruments (instrument_name)
+VALUES ('drum')
+INSERT INTO instruments (instrument_name)
+VALUES ('piano')
+INSERT INTO instruments (instrument_name)
+VALUES ('keyboard / synth')
+INSERT INTO instruments (instrument_name)
+VALUES ('drum machine')
+INSERT INTO instruments (instrument_name)
+VALUES ('brass instrument')
+INSERT INTO instruments (instrument_name)
+VALUES ('string instrument')
+INSERT INTO instruments (instrument_name)
+VALUES ('percussion')
 
--- postgres://obzhuzsf:kY_Ho0WRyGVLNlo--Akm8P4VpDR87oDD@batyr.db.elephantsql.com/obzhuzsf
 
--- psql -d postgres://obzhuzsf:kY_Ho0WRyGVLNlo--Akm8P4VpDR87oDD@batyr.db.elephantsql.com/obzhuzsf -f bandmates_postgres_db.sql
+INSERT INTO genre (genre_name)
+VALUES ('rock')
+INSERT INTO genre (genre_name)
+VALUES ('punk')
+INSERT INTO genre (genre_name)
+VALUES ('metal')
+INSERT INTO genre (genre_name)
+VALUES ('hipHop')
+INSERT INTO genre (genre_name)
+VALUES ('country')
+INSERT INTO genre (genre_name)
+VALUES ('soul')
+INSERT INTO genre (genre_name)
+VALUES ('electronic')
+INSERT INTO genre (genre_name)
+VALUES ('pop')
+INSERT INTO genre (genre_name)
+VALUES ('rnb')
+INSERT INTO genre (genre_name)
+VALUES ('folk')
 
 -- psql -d postgres://obzhuzsf:kY_Ho0WRyGVLNlo--Akm8P4VpDR87oDD@batyr.db.elephantsql.com/obzhuzsf -f bandmates_postgres_db.sql

@@ -37,7 +37,8 @@ router.get(
   '/:id',
   userController.findUser,
   (req, res, next) => {
-    try {
+    try { 
+      // console.log("line 41", res.locals.user)
       res.status(200).json(res.locals.user);
     } catch (error) {
       next(error);
