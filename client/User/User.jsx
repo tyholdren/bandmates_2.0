@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import Search from '../Search/Search.jsx';
+import RecordingContainter from '../Recording/RecordingContainer.jsx';
 
 import NavBar from '../NavBar/NavBar';
 
@@ -107,6 +107,7 @@ const User = () => {
         {isBioShowing ? 'Show less information' : 'Show more information'}
       </button>
     </div>
+    <RecordingContainter/>
 
     </div>
   )
