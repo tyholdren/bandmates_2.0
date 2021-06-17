@@ -50,6 +50,7 @@ module.exports = {
     port: 8080,
     proxy: {
       '/api/users': 'http://localhost:3000',
+      '/api': 'http://localhost:3000',
       '/verify': 'http://localhost:3000',
     },
   },

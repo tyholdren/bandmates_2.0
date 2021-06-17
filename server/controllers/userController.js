@@ -233,6 +233,7 @@ userController.findUser = async (req, res, next) => {
 
 
     // res.locals.user = await db.query(findUser); 
+    console.log("userID", userID);
     console.log("line 182", userData);
     res.locals.user = userData;
     
@@ -277,7 +278,28 @@ userController.deleteUser = async (req, res, next) => {
   }
 };
 
+userController.addFollower = async (req, res, next) => {
+  try {
+    console.log("inside addFollower");
+    const { id } = req.body;
+    const followerID = req.cookies.SSID;
+    console.log("id", id);
+    console.log('followerID', followerID);
 
+    const followerSqlQuery = `
+    INSERT INTO followers(user_id, follower_id)
+    VALUES(${id}, ${followerID})
+    `
+    let sqlRes = await db.query(followerSqlQuery);
+    res.locals.user = sqlRes;
+    return next();
+  } catch(error) {
+    return next({
+      error: `userController.addFollower; ERROR: ${error} `,
+      message: 'Error occured in controllers/userController.js'
+    })
+  }
+}
 
 
 

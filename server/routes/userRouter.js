@@ -48,6 +48,20 @@ router.get(
   }
 );
 
+router.post(
+  '/followers',
+  userController.addFollower,
+  (req, res, next) => {
+    try { 
+      // console.log("line 41", res.locals.user)
+      res.status(200).json(res.locals.user);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+
 // Delete a user
 router.delete(
   '/:id',

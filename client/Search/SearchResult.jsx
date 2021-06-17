@@ -19,6 +19,7 @@ provide a Link (via React Router) to /users/:id.
 */
 
 const SearchResult = ({
+  _id: id,
   name,
   location,
   instruments,
@@ -32,6 +33,33 @@ const SearchResult = ({
   const toggleBio = () => setIsBioShowing(!isBioShowing);
   const formattedInstruments = instruments.join(", ");
   const formattedGenres = genres.join(", ");
+  // const addFollower = (() => {
+  //   fetch('/api/users')
+  //     .then(res => res.json())
+  //     .then(({ users }) => {
+  //       setInitialResults(users);
+  //       setSearchResults(users);
+  //     })
+  //     .catch(err => console.log(err));
+  // }, []);
+
+  // const userFollowerIDs = {
+  //   user_id: id,
+  //   follower_id 
+  // }
+  const idObj = {id: id}
+  console.log("id", id);
+  const addFollower = () => {
+    fetch('/api/followers', {
+      method: 'POST',
+      body: JSON.stringify(id),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+      .then(res => res.json())
+      .catch(err => console.log(err));
+  }
 
   return (
     <div className="searchResult">
@@ -54,6 +82,9 @@ const SearchResult = ({
       <button onClick={toggleBio}>
         {isBioShowing ? 'Show less information' : 'Show more information'}
       </button>
+      {/* <button onClick={addFollower}>
+        Follow
+      </button> */}
     </div>
   )
 };
