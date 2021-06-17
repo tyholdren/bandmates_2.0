@@ -23,7 +23,7 @@ userController.createUser = async (req, res, next) => {
     instruments,
   } = req.body;
 
-
+  res.locals.user = req.body;
   // console.log("deconstructed variables", {
   //   name,
   //   username,
@@ -67,7 +67,7 @@ userController.createUser = async (req, res, next) => {
     //! instrument or genre information anywhere. We need to update
     //! the joins tables to save that information about a new user. 
     // console.log("user line 69", user);
-    res.locals.user = user.rows[0];
+    // res.locals.user = user.rows[0];
     
     // grab id from user.rows[0]._id
     const userIdNum = user.rows[0]._id;
@@ -234,6 +234,7 @@ userController.findUser = async (req, res, next) => {
 
     // res.locals.user = await db.query(findUser); 
     console.log("line 182", userData);
+    res.locals.user = userData;
     
 
     return next();
