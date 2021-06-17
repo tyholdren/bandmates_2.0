@@ -94,7 +94,7 @@ const Search = () => {
   //Do not show this feature during the presentation. 
   return (
     <div className="usersPage">
-      <NavBar />
+      <NavBar type={'search'}/>
       <div id="searchForm">
         <h2>Search</h2>
         <label>

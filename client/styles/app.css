@@ -226,3 +226,11 @@ form > label {
 .redirect {
   margin: 10px 165px; 
 }
+
+
+
+.navBarContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

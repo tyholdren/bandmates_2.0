@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Search from '../Search/Search.jsx';
 
 import NavBar from '../NavBar/NavBar';
 
@@ -33,10 +34,11 @@ const User = () => {
   if (!user) {
     return (
       <>
-        <NavBar />
+        <NavBar type={'profile'}/>
         <div>
           Loading user ...
         </div>
+        
       </>
     )
   }
@@ -65,6 +67,7 @@ const User = () => {
   const singleGenre = genres[0];
 
   //NOTE: not sure if we're actually even using any of this information below...
+
   // return (
 
   //   <>
@@ -104,6 +107,7 @@ const User = () => {
         {isBioShowing ? 'Show less information' : 'Show more information'}
       </button>
     </div>
+
     </div>
   )
 };

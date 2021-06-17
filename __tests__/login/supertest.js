@@ -68,15 +68,5 @@ describe('Route integration', () => {
           });
       });
     });
-  //   describe('PUT', () => {
-  //     xit('responds with 200 status and application/json content type', () => {
-  //     });
-
-  //     xit('responds with the updated market list', () => {
-  //     });
-
-  //     xit('responds to invalid request with 400 status and error message in body', () => {
-  //     });
-  //   });
   });
 });

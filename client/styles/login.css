@@ -43,3 +43,10 @@ border-radius: 50em !important;
   color: black;
   background-color: #d2d2d2;
 }
+
+
+
+.logoutBtn{
+  font-size: .60em;
+  padding: 1em 1em 1em;
+}
