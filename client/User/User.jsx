@@ -84,7 +84,7 @@ const User = () => {
   // )
   return (
     <div>
-    <NavBar />
+    <NavBar type='profile'/>
     <div className="searchResult">
       <div>Name: {name}</div>
       <div>Location: {location}</div>

@@ -11,6 +11,7 @@ import SignUp from './SignUp/SignUp';
 import LogIn from './LogIn/LogIn';
 
 const App = () => (
+  <div className="usersPage">
   <Router>
     <Switch>
       <Route path="/" exact component={LogIn}/>
@@ -22,6 +23,7 @@ const App = () => (
       {/* NOTE: looks like this is already set up for us here? */}
     </Switch>
   </Router>
+  </div>
 );
 
 export default App;
