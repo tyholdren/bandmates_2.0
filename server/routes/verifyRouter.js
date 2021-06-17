@@ -7,7 +7,11 @@ const router = express.Router();
 
 router.post('/login', userController.verifyUser, cookieController.createCookie, (req,res,next) => {
   res.status(200).json(res.locals); // res.locals => body = {valid: true} 
-})
+});
+
+router.get('/logout', cookieController.trashCookie,(req, res, next)=> {
+  res.status(200).json();
+});
 
 
 

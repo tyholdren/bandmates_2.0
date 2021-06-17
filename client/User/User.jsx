@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Search from '../Search/Search.jsx';
 
 import NavBar from '../NavBar/NavBar';
 
@@ -26,10 +27,11 @@ const User = () => {
   if (!user) {
     return (
       <>
-        <NavBar />
+        <NavBar type={'profile'}/>
         <div>
           Loading user ...
         </div>
+        
       </>
     )
   }
@@ -57,18 +59,20 @@ const User = () => {
 
   //NOTE: not sure if we're actually even using any of this information below...
   return (
+    <div>
+      <div>
+        <NavBar />
+        <div>{name}</div>
+        <div>{username}</div>
+        <div>{formattedInstruments}</div>
+        <div>{formattedGenres}</div>
+        <div>{skillLevel}</div>
+        <div>{age} years old, {gender}, located in {location}</div>
+        <div>{bio}</div>
+        <div>{email}</div>
+      </div>
 
-    <>
-      <NavBar />
-      <div>{name}</div>
-      <div>{username}</div>
-      <div>{formattedInstruments}</div>
-      <div>{formattedGenres}</div>
-      <div>{skillLevel}</div>
-      <div>{age} years old, {gender}, located in {location}</div>
-      <div>{bio}</div>
-      <div>{email}</div>
-    </>
+    </div>
   )
 };
 
