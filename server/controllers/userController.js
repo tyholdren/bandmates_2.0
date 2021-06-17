@@ -23,6 +23,7 @@ userController.createUser = async (req, res, next) => {
     instruments,
   } = req.body;
 
+
   // console.log("deconstructed variables", {
   //   name,
   //   username,
@@ -62,7 +63,6 @@ userController.createUser = async (req, res, next) => {
 
   try {
     const user = await db.query(createUserQuery, params);
-
     //! TODO: currently, when we create a user, we are not storing their
     //! instrument or genre information anywhere. We need to update
     //! the joins tables to save that information about a new user. 
@@ -70,23 +70,38 @@ userController.createUser = async (req, res, next) => {
     res.locals.user = user.rows[0];
     
     // grab id from user.rows[0]._id
-    const userIDfromQuery = user.rows[0]._id;
+    const userIdNum = user.rows[0]._id;
+    console.log("userIdNum", userIdNum);
+    res.locals.userId = userIdNum;
 
     // grab instrument_id from instruments table
-    const instrumentSql = `SELECT * FROM instruments WHERE instrument_name = ${instruments}`
+    const instrumentSql = `SELECT * FROM instruments WHERE instrument_name = '${instruments}'`
     const instrumentIdQuery = await db.query(instrumentSql);
-    console.log("line 78", instrumentIdQuery);
+    // console.log("line 78", instrumentIdQuery);
     const instrumentID = instrumentIdQuery.rows[0]._id
-    console.log("insstsds", instrumentID);
+    // console.log("insstsds", instrumentID);
 
     // make sql query to insert into users_instruments
-    const instrumentsQuery = `INSERT INTO `
+    const instrumentsQuery = `
+    INSERT INTO users_instruments (user_id, instrument_id)
+    VALUES (${userIdNum},${instrumentID})
+    `
+    const usersInstrumentsQuery = await db.query(instrumentsQuery);
+
 
     // grab genre_id from genre table
+    const genreSql = `SELECT * FROM genre WHERE genre_name = '${genres}'`
+    const genreIdQuery = await db.query(genreSql);
+    // console.log("line 88", genreIdQuery);
+    const genreID = genreIdQuery.rows[0]._id
+    // console.log("genre id", genreID);
 
     // make sql query to insert into users_genres
-
-
+    const genresQuery = `
+    INSERT INTO users_genres (user_id, genre_id)
+    VALUES (${userIdNum},${genreID})
+    `
+    const usersGenresQuery = await db.query(genresQuery);
 
     return next();
   } catch (error) {
@@ -116,7 +131,7 @@ userController.viewUsers = async (req, res, next) => {
   try {
     const users = await db.query(viewUsers);
     const rows = users.rows;
-    console.log(row);
+    console.log(rows);
     const builtUsers = new Set();
 
     const formattedUsers = rows.reduce((acc, user) => {
@@ -156,10 +171,10 @@ userController.viewUsers = async (req, res, next) => {
 
 //TODO: this middleware will find one user based on that user's ID. 
 userController.findUser = async (req, res, next) => {
-  console.log('COOOOOOOKIEEEEEEEE: ', req.cookies.SSID);
+  // console.log('COOOOOOOKIEEEEEEEE: ', req.cookies.SSID);
 
-  console.log(req.params.id);
-  let userID = req.params.id.slice(1)
+  // console.log(req.params.id);
+  let userID = req.cookies.SSID;
   console.log("userID", userID);  
   
   const viewUsers = `
@@ -207,8 +222,10 @@ userController.findUser = async (req, res, next) => {
 
     console.log("formatted users on profile page", formattedUsers)
     let userData;
+    console.log("user ID line 224", userID);
     for(let i = 0; i < formattedUsers.length; i++) {
-      if(formattedUsers[i]._id === userID) {
+      console.log("formattedUsers[i]._id", formattedUsers[i]._id);
+      if(formattedUsers[i]._id == userID) {
         userData = formattedUsers[i];
         break;
       }

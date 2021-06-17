@@ -44,46 +44,46 @@ CREATE TABLE instruments (
 );
 
 INSERT INTO instruments (instrument_name)
-VALUES ('vocals')
+VALUES ('vocals');
 INSERT INTO instruments (instrument_name)
-VALUES ('guitar')
+VALUES ('guitar');
 INSERT INTO instruments (instrument_name)
-VALUES ('bass')
+VALUES ('bass');
 INSERT INTO instruments (instrument_name)
-VALUES ('drum')
+VALUES ('drum');
 INSERT INTO instruments (instrument_name)
-VALUES ('piano')
+VALUES ('piano');
 INSERT INTO instruments (instrument_name)
-VALUES ('keyboard / synth')
+VALUES ('synth');
 INSERT INTO instruments (instrument_name)
-VALUES ('drum machine')
+VALUES ('drumMachine');
 INSERT INTO instruments (instrument_name)
-VALUES ('brass instrument')
+VALUES ('brass');
 INSERT INTO instruments (instrument_name)
-VALUES ('string instrument')
+VALUES ('string');
 INSERT INTO instruments (instrument_name)
-VALUES ('percussion')
+VALUES ('percussion');
 
 
 INSERT INTO genre (genre_name)
-VALUES ('rock')
+VALUES ('rock');
 INSERT INTO genre (genre_name)
-VALUES ('punk')
+VALUES ('punk');
 INSERT INTO genre (genre_name)
-VALUES ('metal')
+VALUES ('metal');
 INSERT INTO genre (genre_name)
-VALUES ('hipHop')
+VALUES ('hipHop');
 INSERT INTO genre (genre_name)
-VALUES ('country')
+VALUES ('country');
 INSERT INTO genre (genre_name)
-VALUES ('soul')
+VALUES ('soul');
 INSERT INTO genre (genre_name)
-VALUES ('electronic')
+VALUES ('electronic');
 INSERT INTO genre (genre_name)
-VALUES ('pop')
+VALUES ('pop');
 INSERT INTO genre (genre_name)
-VALUES ('rnb')
+VALUES ('rnb');
 INSERT INTO genre (genre_name)
-VALUES ('folk')
+VALUES ('folk');
 
 -- psql -d postgres://obzhuzsf:kY_Ho0WRyGVLNlo--Akm8P4VpDR87oDD@batyr.db.elephantsql.com/obzhuzsf -f bandmates_postgres_db.sql
