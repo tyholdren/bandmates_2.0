@@ -70,9 +70,6 @@ const NavBar = (props) => {
           onClick={handlerLogout}
         />
       </span>
-      <span>
-        <Link to="/users" className="">Search musicians</Link>
-      </span>
       
 
       {/* TODO: clicking "Log out" should actually log a user out,
