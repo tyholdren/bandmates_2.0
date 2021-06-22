@@ -95,6 +95,7 @@ const Search = () => {
   return (
     <div className="usersPage">
       <NavBar type={'search'}/>
+      <div className='searchContainer'>
       <div id="searchForm">
         <h2>Search</h2>
         <label>
@@ -168,6 +169,7 @@ const Search = () => {
           </form>
         </label>
       </div>
+      </div>
       <div className="searchResultsContainer">
         {searchResults.map((result, i) => (
           <SearchResult
@@ -176,6 +178,7 @@ const Search = () => {
           />
         ))}
       </div>
+      
       {(initialResults.length && !searchResults.length) && (
         <div>
           No musicians found based on your criteria. Bummer!

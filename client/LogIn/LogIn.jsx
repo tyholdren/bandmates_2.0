@@ -46,6 +46,10 @@ const LogIn = () => {
     setPassword(event.target.value)
   }
 
+  const handlerEnter = (event) => {
+    // event
+  }
+
   const handlerLogin = () => {
     console.log(username,password)
     //do fetch call

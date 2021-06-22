@@ -49,9 +49,11 @@ border-radius: 50em !important;
 .logoutBtn{
   font-size: .60em;
   padding: 1em 1em 1em;
+  margin-right: 30px;
+  margin-left: 30px;
 }
 
-.floatLeft{
-  float:right;
-  margin-left: 1200px;
+.floatRight{
+  /* position: absolute; */
+
 }
