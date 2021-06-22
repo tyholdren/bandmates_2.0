@@ -17,7 +17,7 @@ const App = () => (
       <Route path="/" exact component={LogIn}/>
       <Route path="/logIn" component={LogIn}/>
       <Route path="/signUp" component={SignUp}/>
-      <Route path="/users" exact component={Search}/>
+      {/* <Route path="/users" exact component={Search}/> */}
       <Route path="/search" exact component={Search}/>
       <Route path="/users/:id" component={User}/> 
       {/* NOTE: looks like this is already set up for us here? */}

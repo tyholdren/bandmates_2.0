@@ -62,7 +62,7 @@ const NavBar = (props) => {
       <span>
         {buttonType}
       </span>
-      <span className='floatLeft'>
+      <span className='floatRight'>
         <input
           className="btn gray block circular logoutBtn"
           type="button"

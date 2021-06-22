@@ -85,6 +85,7 @@ const User = () => {
   return (
     <div>
     <NavBar type='profile'/>
+    <div className='profileContainer'>
     <div className="searchResult">
       <div>Name: {name}</div>
       <div>Location: {location}</div>
@@ -108,6 +109,8 @@ const User = () => {
       </button>
     </div>
     <RecordingContainter/>
+    </div>
+    
 
     </div>
   )
