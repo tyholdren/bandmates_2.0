@@ -1,24 +1,20 @@
-import React, { useState } from 'react';
-import { Link, useHistory, Redirect } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, useHistory, Redirect } from "react-router-dom";
 
-//TODO: figure out how to select multiple values and store them in state
-// Because of this issue, right now a user signing up via our sign up
-// form can only select one instrument and one genre. 
-//! https://stackoverflow.com/questions/30190588/html-select-multiple-as-dropdown
 const SignUp = () => {
-  const [name, setName] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [birthdate, setBirthdate] = useState('');
-  const [instruments, setInstrument] = useState('vocals');
-  const [genres, setGenre] = useState('rock');
-  const [skill, setSkill] = useState('amateur');
-  const [location, setLocation] = useState('');
-  const [gender, setGender] = useState('Woman');
-  const [errors, setErrors] = useState('');
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [birthdate, setBirthdate] = useState("");
+  const [instruments, setInstrument] = useState("vocals");
+  const [genres, setGenre] = useState("rock");
+  const [skill, setSkill] = useState("amateur");
+  const [location, setLocation] = useState("");
+  const [gender, setGender] = useState("Woman");
+  const [errors, setErrors] = useState("");
+  const [email, setEmail] = useState("");
   const [didSignUp, setDidSignUp] = useState(false);
-  const [userID, setUserID] = useState('');
+  const [userID, setUserID] = useState("");
 
   const labelToSetState = {
     username: setUsername,
@@ -33,16 +29,15 @@ const SignUp = () => {
     name: setName,
   };
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     e.preventDefault();
     let { name, value } = e.target;
-    // console.log("name", name);
-    // console.log("value", value);
+
     const updateState = labelToSetState[name];
     updateState(value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const user = {
@@ -58,40 +53,35 @@ const SignUp = () => {
       gender,
     };
 
-    fetch('/api/users', {
-      method: 'POST',
+    fetch("/api/users", {
+      method: "POST",
       body: JSON.stringify(user),
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
     })
-    .then((data) => data.json())
-    .then(data => {
-      console.log(data);
-      setUserID(data._id);
-      setDidSignUp(true);
-    }).catch(err => setErrors(err));
+      .then((data) => data.json())
+      .then((data) => {
+        console.log(data);
+        setUserID(data._id);
+        setDidSignUp(true);
+      })
+      .catch((err) => setErrors(err));
   };
 
-  // This logic is redirecting to the Search component
-  // when someone logs in. 
   let history = useHistory();
   if (didSignUp) {
-    // <Redirect to={`/users/${userID}`} />
     history.push(`/users/${userID}`);
   }
   return (
     <div className="signUpAndLogIn">
       <div id="signUpContainer">
         <h1>Sign Up</h1>
-        {errors && (
-          <div>{errors}</div>
-        )}
+        {errors && <div>{errors}</div>}
         <div>Create an account and find some bandmates!</div>
         <Link to="/logIn">
           <button className="loginFields">
-            Already have an account?
-            Click here to log in.
+            Already have an account? Click here to log in.
           </button>
         </Link>
         <div id="signUpForm">
@@ -213,7 +203,7 @@ const SignUp = () => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default SignUp;

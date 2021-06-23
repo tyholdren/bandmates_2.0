@@ -1,68 +1,52 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
-// TODO: in the future, the NavBar should have
-// information about the current user, and uses that
-// to Link the user to their profile. This will be 
-// accomplished with Redux and Auth. 
 const NavBar = (props) => {
   const history = useHistory();
-  
+
   const handlerLogout = () => {
-    //delete cookie
-    fetch('/verify/logout')
-      .then(response => response.json)
+    fetch("/verify/logout")
+      .then((response) => response.json)
       .then()
-      .catch(err => console.log(err))
-    //redirect to login
-    history.push('/')
-  }
+      .catch((err) => console.log(err));
+
+    history.push("/");
+  };
 
   const handlerSearchMusicians = () => {
-    history.push('/Search')
-  }
+    history.push("/Search");
+  };
 
   const handlerProfile = () => {
-    history.push('/Users/4')
-  }
+    history.push("/Users/4");
+  };
 
   let buttonType;
-  if(props.type === 'profile'){
+  if (props.type === "profile") {
     buttonType = (
       <input
-            className="btn gray block circular logoutBtn"
-            type="button"
-            value="Search Musicians"
-            onClick={handlerSearchMusicians}
+        className="btn gray block circular logoutBtn"
+        type="button"
+        value="Search Musicians"
+        onClick={handlerSearchMusicians}
       />
-    )
-  }
-  else{
+    );
+  } else {
     buttonType = (
       <input
-            className="btn gray block circular logoutBtn"
-            type="button"
-            value="Profile"
-            onClick={handlerProfile}
+        className="btn gray block circular logoutBtn"
+        type="button"
+        value="Profile"
+        onClick={handlerProfile}
       />
-    )
+    );
   }
 
-  
-  return(
+  return (
     <div className="navBarContainer">
-      {/* <div>
-        Hello, {username}!
-      </div> */}
-      {/* <div>
-        <Link to={`/users/${id}`}>View profile</Link>
-      </div> */}
-
-      <span>
-        {buttonType}
-      </span>
-      <span className='floatRight'>
+      <span>{buttonType}</span>
+      <span className="floatRight">
         <input
           className="btn gray block circular logoutBtn"
           type="button"
@@ -70,13 +54,8 @@ const NavBar = (props) => {
           onClick={handlerLogout}
         />
       </span>
-      
-
-      {/* TODO: clicking "Log out" should actually log a user out,
-        not just redirect them to the logIn page.  */}
-      {/* <Link to="/" className="redirect">Log out</Link> */}
     </div>
-  )
+  );
 };
 
 export default NavBar;
