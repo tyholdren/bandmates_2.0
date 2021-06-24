@@ -8,11 +8,11 @@ Working on a new music project and looking for someone to join your band? Or jus
 
 - Create your own user profile to showcase your musical interests and abilities
 - Explore all artist profiles to determine which users you would like to partner with
-- Filter your matches based on instrument, genre, skill-level, location, etc...<br /><br />
+- Filter your matches based on instrument, genre, skill-level, location, etc...
 
 ## Who is this application for?
 
-Musicians who are searching for others to collaborate with in any capacity <br /><br />
+Musicians who are searching for others to collaborate with in any capacity 
 
 ## How do I run this application?
 
@@ -22,7 +22,7 @@ Copy this repository to your local machine, in your terminal, navigate to the ro
 - run 'npm run dev'
 
 Now your server should be running
-<br /><br />
+
 
 ## How do I use Bandmates?
 
@@ -35,5 +35,5 @@ After starting your server, you'll be directed to a login page. Here you can sig
 - Though still in development, we would like to allow users to showcase their musical abilities by uploading sound bytes of their music to their profile
 - Provide users the ability to upload profile images of themselves to further round out their user profile
 - Create an in-app messaging system where users can communicate with one another without having to exchange personal contact information
-- Implement a 'following' feature, where users can follow other profiles and see their followers
-  <br /><br />
+- Implement a 'following' feature, where users can follow other profiles and also view their followers
+
